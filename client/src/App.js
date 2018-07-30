@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Header from "./header";
+import Header from "./components/header";
+import Columns from "./components/columns";
 
 class App extends Component {
   state = {
@@ -21,7 +22,12 @@ class App extends Component {
     return body;
   };
   render() {
-    return <Header />;
+    return (
+      <React.Fragment>
+        <Header />
+        <Columns />
+      </React.Fragment>
+    );
   }
 }
 
