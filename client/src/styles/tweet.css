@@ -41,3 +41,11 @@ body {
 .tweet-link a {
   text-decoration: none;
 }
+
+.tweets-column {
+  background-color: #f1efef;
+  padding: 5px;
+  height: 550px;
+
+  overflow: scroll;
+}
