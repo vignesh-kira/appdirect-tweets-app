@@ -1,4 +1,43 @@
-.avatar {
+.tweet-container .avatar {
   float: left;
+}
+.tweet-container .data {
+  margin-left: 50px;
+}
+
+.main {
+  background-color: #f7f0f0;
+  margin: 0;
+  padding: 0;
+}
+.tweet-container {
+  border-radius: 5px;
+  background-color: white;
+  margin: 20px;
+}
+body {
+  background-color: wheat;
+}
+.container {
+  max-width: 100%;
+}
+
+.tweet-container a {
+  word-wrap: break-word;
+}
+
+.avatar img {
+  border-radius: 50px;
+  margin: 5px;
+}
+.tweet-container .header,
+.tweet-container .content {
+  font-size: 14px;
+}
+.tweet-link {
+  margin-bottom: 10px;
   display: inline-block;
+}
+.tweet-link a {
+  text-decoration: none;
 }
