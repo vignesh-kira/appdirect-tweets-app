@@ -32,7 +32,7 @@ class Columns extends Component {
     )
       .then(response => response.json())
       .then(data => this.updateTwitterFeed(data, "techcrunch"));
-    /* fetch(
+    fetch(
       "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=laughingsquid"
     )
       .then(response => response.json())
@@ -41,18 +41,24 @@ class Columns extends Component {
       "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=appdirect"
     )
       .then(response => response.json())
-      .then(data => this.updateTwitterFeed(data, "appdirect")); */
+      .then(data => this.updateTwitterFeed(data, "appdirect"));
   }
 
   render() {
-    const { techcrunch } = this.state.twitterfeed;
+    const { techcrunch, laughingsquid, appdirect } = this.state.twitterfeed;
+
     const isloadcomplete = this.state.loadcomplete;
     return isloadcomplete ? (
       <div className="container mx-0">
-        <div className="row">
+        <div className="row col-md-12">
           <div className="col-4 col-md-4">
-            {console.log(techcrunch[0].created_at)}
-            <Column tweet={techcrunch} />
+            <Column tweets={techcrunch} />
+          </div>
+          <div className="col-4 col-md-4">
+            <Column tweets={laughingsquid} />
+          </div>
+          <div className="col-4 col-md-4">
+            <Column tweets={appdirect} />
           </div>
         </div>
       </div>

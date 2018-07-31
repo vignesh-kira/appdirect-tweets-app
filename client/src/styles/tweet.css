@@ -48,7 +48,7 @@ body {
 .tweets-column {
   background-color: #e6ecf0;
   padding: 5px;
-  height: 550px;
+  height: 600px;
 
   overflow: scroll;
 }

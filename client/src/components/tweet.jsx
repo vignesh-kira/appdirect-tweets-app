@@ -5,8 +5,9 @@ import "moment-timezone";
 import "font-awesome/css/font-awesome.min.css";
 
 class Tweet extends Component {
-  state = {};
   render() {
+    const date = new Date();
+    const difference = 0;
     return (
       <React.Fragment>
         <div className="tweet-container">
@@ -19,14 +20,12 @@ class Tweet extends Component {
           <div className="data">
             <div className="header">
               <b>{this.props.tweet.user.name}</b>
-              <span class="mx-1">
-                <small class="screen-name">
+              <span className="mx-1">
+                <small className="screen-name">
                   @{this.props.tweet.user.screen_name}
                 </small>
-                <small class="time ">
-                  <Moment fromNow ago>
-                    {this.props.tweet.created_at}
-                  </Moment>
+                <small className="time">
+                  <Moment format="lll">{this.props.tweet.created_at}</Moment>;
                 </small>
               </span>
             </div>
