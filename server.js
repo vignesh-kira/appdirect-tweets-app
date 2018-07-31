@@ -1,6 +1,6 @@
 const express = require("express");
 
-var twitterProxyServer = require("twitter-proxy");
+const twitterProxyServer = require("twitter-proxy");
 twitterProxyServer({
   consumerKey: "9lfkMVjRPJbfqDiXwgjJ33Q18",
   consumerSecret: "ZpyzEbfsxeEIJ3a4MMWC1ueWHHfEpA1HhzcPHGaH2JjbnxsfkV"
