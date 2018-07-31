@@ -1,23 +1,38 @@
 import React, { Component } from "react";
+import TweetParser from "react-tweet-parser";
+import Moment from "react-moment";
+import "moment-timezone";
 import "font-awesome/css/font-awesome.min.css";
 
 class Tweet extends Component {
   state = {};
   render() {
-    console.log(this.props.tweet);
     return (
       <React.Fragment>
         <div className="tweet-container">
           <div className="avatar">
-            <img src={this.props.tweet.user.profile_image_url} />
+            <img
+              src={this.props.tweet.user.profile_image_url}
+              alt="profile-pic"
+            />
           </div>
           <div className="data">
             <div className="header">
               <b>{this.props.tweet.user.name}</b>
-              <time>{this.props.tweet.created_at}</time>
+              <span class="mx-1">
+                <small class="screen-name">
+                  @{this.props.tweet.user.screen_name}
+                </small>
+                <small class="time ">
+                  <Moment fromNow ago>
+                    {this.props.tweet.created_at}
+                  </Moment>
+                </small>
+              </span>
             </div>
             <div className="content">
-              <p>{this.props.tweet.text}</p>
+              <TweetParser>{this.props.tweet.text}</TweetParser>
+
               <div className="tweet-link">
                 <a
                   className="btn-primary btn-sm"

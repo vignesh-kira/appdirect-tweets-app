@@ -14,6 +14,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "http-server": "^0.9.0",
+    "react-moment": "^0.7.9",
     "twitter-proxy": "^2.0.0"
   },
   "devDependencies": {
