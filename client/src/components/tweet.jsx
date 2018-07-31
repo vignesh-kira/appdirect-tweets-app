@@ -1,13 +1,27 @@
 import React, { Component } from "react";
 import TweetParser from "react-tweet-parser";
 import Moment from "react-moment";
+import MomentJS from "moment";
 import "moment-timezone";
 import "font-awesome/css/font-awesome.min.css";
 
 class Tweet extends Component {
+  checkIssue() {
+    const today = MomentJS();
+    const created_at = MomentJS(this.props.tweet.created_at);
+    const daydiff = today.diff(created_at, "days");
+
+    if (daydiff === 0) {
+      return (
+        <Moment fromNow ago>
+          {this.props.tweet.created_at}
+        </Moment>
+      );
+    } else {
+      return <Moment format="lll">{this.props.tweet.created_at}</Moment>;
+    }
+  }
   render() {
-    const date = new Date();
-    const difference = 0;
     return (
       <React.Fragment>
         <div className="tweet-container">
@@ -24,9 +38,7 @@ class Tweet extends Component {
                 <small className="screen-name">
                   @{this.props.tweet.user.screen_name}
                 </small>
-                <small className="time">
-                  <Moment format="lll">{this.props.tweet.created_at}</Moment>;
-                </small>
+                <small className="time">{this.checkIssue()}</small>
               </span>
             </div>
             <div className="content">
@@ -60,5 +72,5 @@ class Tweet extends Component {
 
 export default Tweet;
 /*
-
+;
 */

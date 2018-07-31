@@ -26,7 +26,7 @@ class Columns extends Component {
     this.setState({ loadcomplete: true, twitterfeed });
   };
 
-  componentDidMount() {
+  componentWillMount() {
     fetch(
       "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=techcrunch"
     )
@@ -50,14 +50,14 @@ class Columns extends Component {
     const isloadcomplete = this.state.loadcomplete;
     return isloadcomplete ? (
       <div className="container mx-0">
-        <div className="row col-md-12">
-          <div className="col-4 col-md-4">
+        <div className="row col-sm-12">
+          <div className="col-md-4">
             <Column tweets={techcrunch} />
           </div>
-          <div className="col-4 col-md-4">
+          <div className="col-md-4">
             <Column tweets={laughingsquid} />
           </div>
-          <div className="col-4 col-md-4">
+          <div className="col-md-4">
             <Column tweets={appdirect} />
           </div>
         </div>
