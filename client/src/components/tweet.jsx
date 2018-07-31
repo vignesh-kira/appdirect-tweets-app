@@ -4,27 +4,30 @@ import "font-awesome/css/font-awesome.min.css";
 class Tweet extends Component {
   state = {};
   render() {
+    console.log(this.props.tweet);
     return (
       <React.Fragment>
         <div className="tweet-container">
           <div className="avatar">
-            <img src="https://pbs.twimg.com/profile_images/890252563190226944/lP9wOBFy_normal.jpg" />
+            <img src={this.props.tweet.user.profile_image_url} />
           </div>
           <div className="data">
             <div className="header">
-              <b>TechCrunch</b>
-              <time>7/29/2018, 11:22:03 PM</time>
+              <b>{this.props.tweet.user.name}</b>
+              <time>{this.props.tweet.created_at}</time>
             </div>
             <div className="content">
-              <p>
-                Shortcuts will play a major role in making Siri a truly useful
-                assistant
-              </p>
+              <p>{this.props.tweet.text}</p>
               <div className="tweet-link">
                 <a
                   className="btn-primary btn-sm"
                   data-toggle="collapse"
-                  href="https://twitter.com/TechCrunch/status/1023791566165614594"
+                  href={
+                    "https://twitter.com/" +
+                    this.props.tweet.user.name +
+                    "/status/" +
+                    this.props.tweet.id_str
+                  }
                   role="button"
                   aria-expanded="false"
                   aria-controls="collapseExample"
@@ -42,3 +45,6 @@ class Tweet extends Component {
 }
 
 export default Tweet;
+/*
+
+*/

@@ -29,6 +29,8 @@ body {
 .avatar img {
   border-radius: 50px;
   margin: 5px;
+  height: 40px;
+  width: 40px;
 }
 .tweet-container .header,
 .tweet-container .content {
