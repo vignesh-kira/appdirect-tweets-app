@@ -8,12 +8,10 @@ class Column extends Component {
   };
   render() {
     return (
-      <div className="tweets-column">
-        <div class="tweet-column-data">
-          {this.props.tweets.map(tweet => (
-            <Tweet key={tweet.index} tweet={tweet} />
-          ))}
-        </div>
+      <div class="tweet-column-data">
+        {this.props.tweets.map(tweet => (
+          <Tweet key={tweet.index} tweet={tweet} />
+        ))}
       </div>
     );
   }

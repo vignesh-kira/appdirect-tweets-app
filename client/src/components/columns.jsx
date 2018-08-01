@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Column from "./column";
 import Settings from "./settings";
+import loader from "../images/loader.gif";
 
 class Columns extends Component {
   constructor() {
@@ -55,19 +56,67 @@ class Columns extends Component {
         <div className="container mx-0 p-0">
           <div className="row col-lg-12 col-sm-12  m-0 p-0">
             <div className="col-lg-4 col-md-12 mb-3">
-              <Column tweets={techcrunch} />
+              <div className="tweets-column">
+                <Column tweets={techcrunch} />
+              </div>
             </div>
             <div className="col-lg-4 col-md-12 mb-3">
-              <Column tweets={laughingsquid} />
+              <div className="tweets-column">
+                <Column tweets={laughingsquid} />
+              </div>
             </div>
             <div className="col-lg-4 col-md-12 mb-3">
-              <Column tweets={appdirect} />
+              <div className="tweets-column">
+                <Column tweets={appdirect} />
+              </div>
             </div>
           </div>
         </div>
       </React.Fragment>
     ) : (
-      <div />
+      <React.Fragment>
+        <Settings />
+        <div className="container mx-0 p-0">
+          <div className="row col-lg-12 col-sm-12  m-0 p-0">
+            <div className="col-lg-4 col-md-12 mb-3">
+              <div className="tweets-column">
+                <div id="center" className="loader-wrapper">
+                  <img
+                    class="spinner"
+                    src={loader}
+                    height="40px"
+                    width="40px"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-12 mb-3">
+              <div className="tweets-column">
+                <div id="center" className="loader-wrapper">
+                  <img
+                    class="spinner"
+                    src={loader}
+                    height="40px"
+                    width="40px"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-12 mb-3">
+              <div className="tweets-column">
+                <div id="center" className="loader-wrapper">
+                  <img
+                    class="spinner"
+                    src={loader}
+                    height="40px"
+                    width="40px"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

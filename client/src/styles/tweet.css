@@ -68,3 +68,8 @@ body {
 .app-settings a {
   text-decoration: none;
 }
+.loader-wrapper {
+  position: relative;
+  top: 20%;
+  left: 45%;
+}
