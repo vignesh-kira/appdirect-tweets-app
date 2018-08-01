@@ -16,3 +16,10 @@
   opacity: 0.5 !important;
 }
 */
+.sortableHelper {
+  z-index: 9999;
+  list-style-type: none;
+}
+#reorderList ul {
+  list-style-type: none;
+}

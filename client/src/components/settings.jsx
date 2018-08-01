@@ -11,17 +11,39 @@ import {
   Input,
   FormText
 } from "reactstrap";
+import {
+  SortableContainer,
+  SortableElement,
+  arrayMove
+} from "react-sortable-hoc";
 import "../styles/settings.css";
+
+const SortableItem = SortableElement(({ value }) => <li>{value}</li>);
+
+const SortableList = SortableContainer(({ items }) => {
+  return (
+    <ul>
+      {items.map((value, index) => (
+        <SortableItem key={`item-${index}`} index={index} value={value} />
+      ))}
+    </ul>
+  );
+});
 
 class Settings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      items: ["Item 1", "Item 2", "Item 3"]
     };
-
     this.toggle = this.toggle.bind(this);
   }
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState({
+      items: arrayMove(this.state.items, oldIndex, newIndex)
+    });
+  };
 
   toggle() {
     this.setState({
@@ -52,7 +74,7 @@ class Settings extends React.Component {
           <ModalBody>
             <Form>
               <FormGroup>
-                <Label for="exampleEmail">
+                <Label for="tweetCount">
                   Tweets per Column (between 5 and 30):
                 </Label>
                 <Input
@@ -63,26 +85,27 @@ class Settings extends React.Component {
                   max="30"
                 />
               </FormGroup>
-              <FormGroup>
-                <Label for="examplePassword">Password</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  id="examplePassword"
-                  placeholder="password placeholder"
+              <FormGroup id="reorderList">
+                <Label for="examplePassword">Re-order columns:</Label>
+                <SortableList
+                  items={this.state.items}
+                  onSortEnd={this.onSortEnd}
+                  helperClass="sortableHelper"
                 />
               </FormGroup>
-              <Button>Submit</Button>
+              <FormGroup>
+                <Label for="skin">Select Page Skin:</Label>
+                <Input type="select" name="skin" id="skin">
+                  <option>Pearl</option>
+                  <option>Sapphire</option>
+                  <option>Jade</option>
+                </Input>
+              </FormGroup>
+              <div className="my-2 text-center">
+                <Button color="primary">Save</Button>
+              </div>
             </Form>
           </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>
-              Save
-            </Button>
-            <Button color="secondary" onClick={this.toggle}>
-              Cancel
-            </Button>
-          </ModalFooter>
         </Modal>
       </div>
     );
