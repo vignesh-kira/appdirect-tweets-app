@@ -52,15 +52,15 @@ class Columns extends Component {
     return isloadcomplete ? (
       <React.Fragment>
         <Settings />
-        <div className="container mx-0">
-          <div className="row col-sm-12 col-md-12">
-            <div className="col-md-4">
+        <div className="container mx-0 p-0">
+          <div className="row col-lg-12 col-sm-12  m-0 p-0">
+            <div className="col-lg-4 col-md-12 mb-3">
               <Column tweets={techcrunch} />
             </div>
-            <div className="col-md-4">
+            <div className="col-lg-4 col-md-12 mb-3">
               <Column tweets={laughingsquid} />
             </div>
-            <div className="col-md-4">
+            <div className="col-lg-4 col-md-12 mb-3">
               <Column tweets={appdirect} />
             </div>
           </div>

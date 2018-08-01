@@ -23,3 +23,6 @@
 #reorderList ul {
   list-style-type: none;
 }
+.edit-settings-btn {
+  margin: 5px 0 7px;
+}

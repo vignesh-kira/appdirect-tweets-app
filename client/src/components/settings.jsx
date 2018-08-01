@@ -53,9 +53,9 @@ class Settings extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div className="row col-sm-12">
-          <div className="app-settings col-md-12 text-center">
+          <div className="edit-settings-btn col-md-12 text-center">
             <a
               className="btn-primary btn-sm"
               data-toggle="collapse"
@@ -107,7 +107,7 @@ class Settings extends React.Component {
             </Form>
           </ModalBody>
         </Modal>
-      </div>
+      </React.Fragment>
     );
   }
 }
