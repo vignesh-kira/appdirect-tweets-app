@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Column from "./column";
+import Settings from "./settings";
 
 class Columns extends Component {
   constructor() {
@@ -49,33 +50,22 @@ class Columns extends Component {
 
     const isloadcomplete = this.state.loadcomplete;
     return isloadcomplete ? (
-      <div className="container mx-0">
-        <div className="row col-sm-12">
-          <div className="app-settings col-md-12 text-center">
-            <a
-              className="btn-primary btn-sm"
-              data-toggle="collapse"
-              href=""
-              role="button"
-              aria-expanded="false"
-              aria-controls="collapseExample"
-            >
-              Edit <i className="fa fa-cog fa-lg" />
-            </a>
+      <React.Fragment>
+        <Settings />
+        <div className="container mx-0">
+          <div className="row col-sm-12 col-md-12">
+            <div className="col-md-4">
+              <Column tweets={techcrunch} />
+            </div>
+            <div className="col-md-4">
+              <Column tweets={laughingsquid} />
+            </div>
+            <div className="col-md-4">
+              <Column tweets={appdirect} />
+            </div>
           </div>
         </div>
-        <div className="row col-sm-12 col-md-12">
-          <div className="col-md-4">
-            <Column tweets={techcrunch} />
-          </div>
-          <div className="col-md-4">
-            <Column tweets={laughingsquid} />
-          </div>
-          <div className="col-md-4">
-            <Column tweets={appdirect} />
-          </div>
-        </div>
-      </div>
+      </React.Fragment>
     ) : (
       <div />
     );
