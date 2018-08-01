@@ -1,35 +1,35 @@
-import React, { Component } from "react";
-import { Button, Modal, Popover, Tooltip } from "reactstrap";
+import React from "react";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText
+} from "reactstrap";
 import "../styles/settings.css";
 
-class Settings extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-
+class Settings extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      show: false
+      modal: false
     };
+
+    this.toggle = this.toggle.bind(this);
   }
 
-  handleClose() {
-    this.setState({ show: false });
-  }
-
-  handleShow() {
-    this.setState({ show: true });
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render() {
-    const popover = (
-      <Popover id="modal-popover" title="popover">
-        very popover. such engagement
-      </Popover>
-    );
-    const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
-
     return (
       <div>
         <div className="row col-sm-12">
@@ -41,28 +41,48 @@ class Settings extends Component {
               role="button"
               aria-expanded="false"
               aria-controls="collapseExample"
-              onClick={this.handleShow}
+              onClick={this.toggle}
             >
               Edit <i className="fa fa-cog fa-lg" />
             </a>
           </div>
         </div>
-
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>
-              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-              cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-              dui. Donec ullamcorper nulla non metus auctor fringilla.
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.handleClose}>Close</Button>
-          </Modal.Footer>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className="">
+          <ModalHeader toggle={this.toggle}>Edit Settings</ModalHeader>
+          <ModalBody>
+            <Form>
+              <FormGroup>
+                <Label for="exampleEmail">
+                  Tweets per Column (between 5 and 30):
+                </Label>
+                <Input
+                  name="tweetCount"
+                  id="tweetCount"
+                  type="range"
+                  min="5"
+                  max="30"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="examplePassword">Password</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  id="examplePassword"
+                  placeholder="password placeholder"
+                />
+              </FormGroup>
+              <Button>Submit</Button>
+            </Form>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.toggle}>
+              Save
+            </Button>
+            <Button color="secondary" onClick={this.toggle}>
+              Cancel
+            </Button>
+          </ModalFooter>
         </Modal>
       </div>
     );
