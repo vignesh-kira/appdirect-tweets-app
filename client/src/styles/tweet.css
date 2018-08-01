@@ -49,7 +49,6 @@ body {
   background-color: #e6ecf0;
   padding: 5px;
   height: 600px;
-
   overflow: scroll;
 }
 
@@ -60,4 +59,11 @@ body {
 .tweet-container .time,
 .tweet-container .screen-name {
   color: #657786;
+}
+
+.app-settings {
+  margin: 5px;
+}
+.app-settings a {
+  text-decoration: none;
 }

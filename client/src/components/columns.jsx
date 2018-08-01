@@ -26,7 +26,7 @@ class Columns extends Component {
     this.setState({ loadcomplete: true, twitterfeed });
   };
 
-  componentWillMount() {
+  componentDidMount() {
     fetch(
       "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=techcrunch"
     )
@@ -51,6 +51,20 @@ class Columns extends Component {
     return isloadcomplete ? (
       <div className="container mx-0">
         <div className="row col-sm-12">
+          <div className="app-settings col-md-12 text-center">
+            <a
+              className="btn-primary btn-sm"
+              data-toggle="collapse"
+              href=""
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              Edit <i className="fa fa-cog fa-lg" />
+            </a>
+          </div>
+        </div>
+        <div className="row col-sm-12 col-md-12">
           <div className="col-md-4">
             <Column tweets={techcrunch} />
           </div>

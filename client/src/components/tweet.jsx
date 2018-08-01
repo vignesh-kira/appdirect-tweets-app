@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import TweetParser from "react-tweet-parser";
 import Moment from "react-moment";
 import MomentJS from "moment";
-import "moment-timezone";
-import "font-awesome/css/font-awesome.min.css";
 
 class Tweet extends Component {
   checkIssue() {
@@ -55,8 +53,6 @@ class Tweet extends Component {
                     this.props.tweet.id_str
                   }
                   role="button"
-                  aria-expanded="false"
-                  aria-controls="collapseExample"
                   target="_blank"
                 >
                   <i className="fa fa-twitter" />
