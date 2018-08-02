@@ -52,7 +52,7 @@ class Settings extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row col-sm-12">
+        <div className="row col-sm-12 m-0">
           <div className="edit-settings-btn col-md-12 text-center">
             <a
               className="btn-primary btn-sm"

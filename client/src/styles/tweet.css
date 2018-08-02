@@ -16,12 +16,6 @@
   margin: 15px;
   padding-right: 5px;
 }
-body {
-  background-color: wheat;
-}
-.container {
-  max-width: 100%;
-}
 
 .tweet-container a {
   word-wrap: break-word;
@@ -37,6 +31,7 @@ body {
 .tweet-container .content {
   font-size: 14px;
   word-break: break-all;
+  text-align: left;
 }
 .tweet-link {
   margin-bottom: 10px;

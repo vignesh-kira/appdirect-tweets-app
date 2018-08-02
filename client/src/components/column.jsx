@@ -3,12 +3,9 @@ import Tweet from "./tweet";
 import "../styles/tweet.css";
 
 class Column extends Component {
-  state = {
-    name: "vignesh"
-  };
   render() {
-    const tweets = this.props.tweets;
-    const tweetCount = this.props.tweetCount;
+    const { tweets } = this.props;
+    const { tweetCount } = this.props;
     return (
       <div className="tweet-column-data">
         {tweets

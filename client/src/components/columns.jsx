@@ -8,7 +8,7 @@ class Columns extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loadcomplete: false,
+      isloadcomplete: false,
       twitterfeed: {
         techcrunch: [],
         laughingsquid: [],
@@ -42,7 +42,7 @@ class Columns extends Component {
     } else {
       twitterfeed.techcrunch = data;
     }
-    this.setState({ loadcomplete: true, twitterfeed });
+    this.setState({ isloadcomplete: true, twitterfeed });
   };
 
   componentDidMount() {
@@ -65,12 +65,8 @@ class Columns extends Component {
 
   render() {
     const { techcrunch, laughingsquid, appdirect } = this.state.twitterfeed;
-    const { tweetCount } = this.state;
-    const isloadcomplete = this.state.loadcomplete;
-    //  this.changeColumnOrder();
-    //  this.state.tweetCounst.techcrunch = ["1", "2", "3"];
-    // console.log(this.state.tweetCounst.techcrunch);
-    console.log(this.state);
+    const { tweetCount, isloadcomplete } = this.state;
+
     return isloadcomplete ? (
       <React.Fragment>
         <Settings />

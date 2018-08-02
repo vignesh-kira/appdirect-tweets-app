@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import logo from "../images/logo.svg";
-import "../styles/App.css";
+import "../styles/header.css";
 
 class Header extends Component {
-  state = {};
   render() {
     return (
-      <header className="App App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to Tweets Display Demo</h1>
+      <header className="header header-header">
+        <img src={logo} className="header-logo" alt="logo" />
+        <h1 className="header-title">
+          Welcome to AppDirect Front End Code Challenge - Display Tweets
+        </h1>
       </header>
     );
   }
 }
-// {this.state.response}
 
 export default Header;
