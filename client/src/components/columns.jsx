@@ -8,7 +8,8 @@ class Columns extends Component {
     super(props);
     let tweetCountLocal = localStorage.getItem("tweetCount");
     let skinLocal = localStorage.getItem("skin");
-    let twitterfeedLocal = localStorage.getItem("twitterfeed");
+    let twitterUserLocal = localStorage.getItem("twitterUsers");
+
     this.state = {
       isloadcomplete: false,
       twitterfeed: [],
@@ -20,7 +21,9 @@ class Columns extends Component {
       tweetCount: tweetCountLocal ? tweetCountLocal : 15,
       skin: skinLocal ? skinLocal : "Pearl"
     };
-
+    if (twitterUserLocal) {
+      this.state.twitterUsers = JSON.parse(twitterUserLocal);
+    }
     this.changeTweetCount = this.changeTweetCount.bind(this);
     this.changeSkin = this.changeSkin.bind(this);
     this.changeSkinColor = this.changeSkinColor.bind(this);
@@ -52,8 +55,13 @@ class Columns extends Component {
 
   changeTweetColumnOrder = twitterfeedIn => {
     let twitterfeed = twitterfeedIn;
+    let twitterUsersNew = {};
+
     this.setState({ twitterfeed });
-    // localStorage.setItem("tweetCount", tweetCount);
+    twitterfeed.map(
+      account => (twitterUsersNew[account[0].user.screen_name] = [])
+    );
+    localStorage.setItem("twitterUsers", JSON.stringify(twitterUsersNew));
   };
 
   changeTweetCount = tweetCountIn => {
