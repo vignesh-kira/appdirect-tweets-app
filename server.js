@@ -2,8 +2,8 @@ const express = require("express");
 
 const twitterProxyServer = require("twitter-proxy");
 twitterProxyServer({
-  consumerKey: "",
-  consumerSecret: ""
+  consumerKey: "9lfkMVjRPJbfqDiXwgjJ33Q18",
+  consumerSecret: "ZpyzEbfsxeEIJ3a4MMWC1ueWHHfEpA1HhzcPHGaH2JjbnxsfkV"
 });
 const app = express();
 const port = process.env.PORT || 5000;
