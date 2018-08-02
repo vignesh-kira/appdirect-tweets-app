@@ -110,7 +110,7 @@ class Settings extends React.Component {
                 <Input
                   id="tweetCount"
                   type="range"
-                  min="5"
+                  min="1"
                   max="30"
                   value={this.props.tweetCount}
                   onChange={this.handleChange}

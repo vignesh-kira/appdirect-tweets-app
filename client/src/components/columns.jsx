@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Column from "./column";
 import Settings from "./settings";
 import loaderImg from "../images/loader.gif";
-import LocalStorage from "react-localstorage";
+import LocalStorageS from "react-localstorage";
 
 class Columns extends Component {
   constructor(props) {
@@ -58,7 +58,7 @@ class Columns extends Component {
     for (var i = 0; i < 3; i++) {
       loader.push(
         <div className="col-lg-4 col-md-12 mb-3">
-          <div className="tweets-column">
+          <div className="tweets-column fixedHeight">
             <div id="center" className="loader-wrapper">
               <img
                 className="loader"

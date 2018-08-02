@@ -44,8 +44,11 @@
 .tweets-column {
   background-color: #e6ecf0;
   padding: 5px;
-  height: 600px;
+  max-height: 600px;
   overflow: scroll;
+}
+.fixedHeight {
+  height: 600px;
 }
 
 .tweet-container .time:before {
