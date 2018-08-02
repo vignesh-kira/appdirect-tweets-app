@@ -7,6 +7,7 @@ import LocalStorageS from "react-localstorage";
 class Columns extends Component {
   constructor(props) {
     super(props);
+    let tweetCountLocal = localStorage.getItem("tweetCount");
     this.state = {
       isloadcomplete: false,
       twitterfeed: {
@@ -17,7 +18,9 @@ class Columns extends Component {
       tweetCount: 15,
       skin: "Pearl"
     };
-
+    if (tweetCountLocal !== null) {
+      this.state.tweetCount = tweetCountLocal;
+    }
     this.changeTweetCount = this.changeTweetCount.bind(this);
   }
 
@@ -50,6 +53,7 @@ class Columns extends Component {
   changeTweetCount = tweetCountIn => {
     let tweetCount = tweetCountIn;
     this.setState({ tweetCount });
+    localStorage.setItem("tweetCount", tweetCount);
   };
 
   render() {
