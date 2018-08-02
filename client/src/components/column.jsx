@@ -7,11 +7,13 @@ class Column extends Component {
     name: "vignesh"
   };
   render() {
+    const tweets = this.props.tweets;
+    const tweetCount = this.props.tweetCount;
     return (
-      <div class="tweet-column-data">
-        {this.props.tweets.map(tweet => (
-          <Tweet key={tweet.index} tweet={tweet} />
-        ))}
+      <div className="tweet-column-data">
+        {tweets
+          .slice(0, tweetCount)
+          .map(tweet => <Tweet key={tweet.index} tweet={tweet} />)}
       </div>
     );
   }

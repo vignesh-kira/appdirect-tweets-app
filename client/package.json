@@ -9,6 +9,7 @@
     "moment": "^2.22.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-localstorage": "^1.0.0",
     "react-moment": "^0.7.9",
     "react-scripts": "1.1.4",
     "react-sortable-hoc": "^0.8.3",

@@ -2,11 +2,27 @@ import React, { Component } from "react";
 import Column from "./column";
 import Settings from "./settings";
 import loader from "../images/loader.gif";
+import LocalStorage from "react-localstorage";
 
 class Columns extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      loadcomplete: false,
+      twitterfeed: {
+        techcrunch: [],
+        laughingsquid: [],
+        appdirect: []
+      },
+      tweetCount: 30
+    };
+  }
+
+  changeColumnOrder = () => {
+    let newState = this.state;
+    newState = {
+      tweetCount: 5,
+      tweetTest: ["techcrunch"],
       loadcomplete: false,
       twitterfeed: {
         techcrunch: [],
@@ -14,10 +30,11 @@ class Columns extends Component {
         appdirect: []
       }
     };
-  }
+    this.setState(newState);
+  };
 
   updateTwitterFeed = (data, user) => {
-    var twitterfeed = { ...this.state.twitterfeed };
+    const twitterfeed = { ...this.state.twitterfeed };
     if (user === "appdirect") {
       twitterfeed.appdirect = data;
     } else if (user === "laughingsquid") {
@@ -48,8 +65,12 @@ class Columns extends Component {
 
   render() {
     const { techcrunch, laughingsquid, appdirect } = this.state.twitterfeed;
-
+    const { tweetCount } = this.state;
     const isloadcomplete = this.state.loadcomplete;
+    //  this.changeColumnOrder();
+    //  this.state.tweetCounst.techcrunch = ["1", "2", "3"];
+    // console.log(this.state.tweetCounst.techcrunch);
+    console.log(this.state);
     return isloadcomplete ? (
       <React.Fragment>
         <Settings />
@@ -57,17 +78,17 @@ class Columns extends Component {
           <div className="row col-lg-12 col-sm-12  m-0 p-0">
             <div className="col-lg-4 col-md-12 mb-3">
               <div className="tweets-column">
-                <Column tweets={techcrunch} />
+                <Column tweets={techcrunch} tweetCount={tweetCount} />
               </div>
             </div>
             <div className="col-lg-4 col-md-12 mb-3">
               <div className="tweets-column">
-                <Column tweets={laughingsquid} />
+                <Column tweets={laughingsquid} tweetCount={tweetCount} />
               </div>
             </div>
             <div className="col-lg-4 col-md-12 mb-3">
               <div className="tweets-column">
-                <Column tweets={appdirect} />
+                <Column tweets={appdirect} tweetCount={tweetCount} />
               </div>
             </div>
           </div>
@@ -82,10 +103,11 @@ class Columns extends Component {
               <div className="tweets-column">
                 <div id="center" className="loader-wrapper">
                   <img
-                    class="spinner"
+                    className="loader"
                     src={loader}
                     height="40px"
                     width="40px"
+                    alt="loader"
                   />
                 </div>
               </div>
@@ -94,10 +116,11 @@ class Columns extends Component {
               <div className="tweets-column">
                 <div id="center" className="loader-wrapper">
                   <img
-                    class="spinner"
+                    className="loader"
                     src={loader}
                     height="40px"
                     width="40px"
+                    alt="loader"
                   />
                 </div>
               </div>
@@ -106,10 +129,11 @@ class Columns extends Component {
               <div className="tweets-column">
                 <div id="center" className="loader-wrapper">
                   <img
-                    class="spinner"
+                    className="loader"
                     src={loader}
                     height="40px"
                     width="40px"
+                    alt="loader"
                   />
                 </div>
               </div>
@@ -122,29 +146,3 @@ class Columns extends Component {
 }
 
 export default Columns;
-
-/*
-    if (!this.state.loading) {
-      return (
-        <div className="container mx-0">
-          <div className="row">
-            <div className="col-4 col-md-4">
-              {console.log(techcrunch[0].created_at)}
-              <Column tweet={techcrunch[0]} />
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      return <div />;
-    }
-
-*/
-/*
-  <div className="col-4 col-md-4">
-            <Column tweet={this.state.twitterfeed.laughingsquid} />
-          </div>
-          <div className="col-4 col-md-4">
-            <Column tweet={this.state.twitterfeed.appdirect} />
-          </div>
-*/
