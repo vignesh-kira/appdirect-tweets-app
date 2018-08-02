@@ -17,6 +17,8 @@ class Columns extends Component {
       tweetCount: 5,
       skin: "Pearl"
     };
+
+    this.changeTweetCount = this.changeTweetCount.bind(this);
   }
 
   changeColumnOrder = () => {
@@ -58,6 +60,11 @@ class Columns extends Component {
     });
   }
 
+  changeTweetCount = tweetCountIn => {
+    let tweetCount = tweetCountIn;
+    this.setState({ tweetCount });
+  };
+
   render() {
     const { twitterfeed, tweetCount, isloadcomplete, skin } = this.state;
     const loader = [];
@@ -84,6 +91,7 @@ class Columns extends Component {
           twitterfeed={twitterfeed}
           tweetCount={tweetCount}
           skin={skin}
+          changeTweetCount={this.changeTweetCount}
         />
         <div className="container mx-0 p-0">
           <div className="row col-lg-12 col-sm-12  m-0 p-0">

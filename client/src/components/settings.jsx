@@ -67,7 +67,8 @@ class Settings extends React.Component {
     alert("Name: " + this.state.formValues.name);
   }
   handleChange(event) {
-    this.setState({ tweetCount: event.target.value });
+    //   this.setState({ tweetCount: event.target.value });
+    this.props.changeTweetCount(event.target.value);
   }
   handleSubmit = event => {
     event.preventDefault();
@@ -111,7 +112,7 @@ class Settings extends React.Component {
                   type="range"
                   min="2"
                   max="30"
-                  value={this.state.value}
+                  value={this.props.tweetCount}
                   onChange={this.handleChange}
                   step="1"
                 />
