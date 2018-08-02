@@ -43,7 +43,8 @@ class Settings extends React.Component {
       formValues: {}
     };
     this.toggle = this.toggle.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.changeTweetCount = this.changeTweetCount.bind(this);
+    this.changeSkin = this.changeSkin.bind(this);
   }
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState({
@@ -56,29 +57,13 @@ class Settings extends React.Component {
       modal: !this.state.modal
     });
   }
-  handleChange2(event) {
-    event.preventDefault();
-    let formValues = this.state.formValues;
-    let name = event.target.name;
-    let value = event.target.value;
 
-    formValues[name] = value;
-    this.setState({ formValues });
-    alert("Name: " + this.state.formValues.name);
-  }
-  handleChange(event) {
-    //   this.setState({ tweetCount: event.target.value });
+  changeTweetCount(event) {
     this.props.changeTweetCount(event.target.value);
   }
-  handleSubmit = event => {
-    event.preventDefault();
-    alert(
-      "Name: " +
-        this.state.formValues.name +
-        " Email: " +
-        this.state.formValues.email
-    );
-  };
+  changeSkin(event) {
+    this.props.changeSkin(event.target.value);
+  }
 
   render() {
     console.log(this.props.twitterfeed);
@@ -102,7 +87,7 @@ class Settings extends React.Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className="">
           <ModalHeader toggle={this.toggle}>Edit Settings</ModalHeader>
           <ModalBody>
-            <Form onSubmit={this.handleSubmit.bind(this)}>
+            <Form>
               <FormGroup>
                 <Label for="tweetCount">
                   Tweets per Column (between 5 and 30):
@@ -113,9 +98,23 @@ class Settings extends React.Component {
                   min="1"
                   max="30"
                   value={this.props.tweetCount}
-                  onChange={this.handleChange}
+                  onChange={this.changeTweetCount}
                   step="1"
                 />
+              </FormGroup>
+              <FormGroup>
+                <Label for="skin">Page Skin:</Label>
+                <Input
+                  type="select"
+                  name="skin"
+                  id="skin"
+                  value={this.props.skin}
+                  onChange={this.changeSkin}
+                >
+                  <option value="Pearl">Pearl</option>
+                  <option value="Sapphire">Sapphire</option>
+                  <option value="Jade">Jade</option>
+                </Input>
               </FormGroup>
               <FormGroup id="reorderList">
                 <Label for="reorderList">Re-order columns:</Label>
@@ -125,14 +124,6 @@ class Settings extends React.Component {
                   helperClass="sortableHelper btn btn-info"
                   className="dragItem"
                 />
-              </FormGroup>
-              <FormGroup>
-                <Label for="skin">Page Skin:</Label>
-                <Input type="select" name="skin" id="skin">
-                  <option>Pearl</option>
-                  <option>Sapphire</option>
-                  <option>Jade</option>
-                </Input>
               </FormGroup>
             </Form>
           </ModalBody>

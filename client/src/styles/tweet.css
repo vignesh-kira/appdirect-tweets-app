@@ -47,9 +47,6 @@
   max-height: 600px;
   overflow: scroll;
 }
-.fixedHeight {
-  height: 600px;
-}
 
 .tweet-container .time:before {
   content: "\00b7";
@@ -68,6 +65,30 @@
 }
 .loader-wrapper {
   position: relative;
-  top: 20%;
+  top: 30%;
   left: 45%;
+}
+.loaderColumn {
+  height: 400px;
+  background-color: transparent;
+}
+
+.body-skin-pearl {
+  background-color: wheat;
+}
+.body-skin-sapphire {
+  background-color: #36a9cc;
+}
+.body-skin-jade {
+  background-color: #618054;
+}
+
+.column-skin-pearl {
+  background-color: #e6ecf0;
+}
+.column-skin-sapphire {
+  background-color: #bbb6b1;
+}
+.column-skin-jade {
+  background-color: #d0d0d0;
 }

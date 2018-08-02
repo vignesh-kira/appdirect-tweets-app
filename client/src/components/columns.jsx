@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Column from "./column";
 import Settings from "./settings";
-import loaderImg from "../images/loader.gif";
-import LocalStorageS from "react-localstorage";
+import loaderImg from "../images/loadingblack.gif";
 
 class Columns extends Component {
   constructor(props) {
     super(props);
     let tweetCountLocal = localStorage.getItem("tweetCount");
+    let skinLocal = localStorage.getItem("skin");
+    let twitterfeedLocal = localStorage.getItem("twitterfeed");
     this.state = {
       isloadcomplete: false,
       twitterfeed: {
@@ -15,16 +16,15 @@ class Columns extends Component {
         laughingsquid: [],
         appdirect: []
       },
-      tweetCount: 15,
-      skin: "Pearl"
+      tweetCount: tweetCountLocal ? tweetCountLocal : 15,
+      skin: skinLocal ? skinLocal : "Pearl"
     };
-    if (tweetCountLocal !== null) {
-      this.state.tweetCount = tweetCountLocal;
-    }
-    this.changeTweetCount = this.changeTweetCount.bind(this);
-  }
 
-  changeColumnOrder = () => {};
+    this.changeTweetCount = this.changeTweetCount.bind(this);
+    this.changeSkin = this.changeSkin.bind(this);
+    this.changeSkinColor = this.changeSkinColor.bind(this);
+    this.changeSkinColor(this.state.skin);
+  }
 
   componentDidMount() {
     const promises = [];
@@ -55,6 +55,25 @@ class Columns extends Component {
     this.setState({ tweetCount });
     localStorage.setItem("tweetCount", tweetCount);
   };
+  changeSkin = skinColor => {
+    let skin = skinColor;
+    this.setState({ skin });
+    localStorage.setItem("skin", skinColor);
+    this.changeSkinColor(skin);
+  };
+  changeSkinColor = skinIn => {
+    const skin = skinIn;
+    let body = document.body.classList;
+
+    body.remove("body-skin-jade", "body-skin-sapphire", "body-skin-pearl");
+    if (skin === "Jade") {
+      body.add("body-skin-jade");
+    } else if (skin === "Sapphire") {
+      body.add("body-skin-sapphire");
+    } else {
+      body.add("body-skin-pearl");
+    }
+  };
 
   render() {
     const { twitterfeed, tweetCount, isloadcomplete, skin } = this.state;
@@ -62,13 +81,13 @@ class Columns extends Component {
     for (var i = 0; i < 3; i++) {
       loader.push(
         <div className="col-lg-4 col-md-12 mb-3">
-          <div className="tweets-column fixedHeight">
+          <div className="tweets-column loaderColumn">
             <div id="center" className="loader-wrapper">
               <img
                 className="loader"
                 src={loaderImg}
-                height="40px"
-                width="40px"
+                height="60"
+                width="60"
                 alt="loader"
               />
             </div>
@@ -76,6 +95,7 @@ class Columns extends Component {
         </div>
       );
     }
+
     return isloadcomplete ? (
       <React.Fragment>
         <Settings
@@ -83,6 +103,7 @@ class Columns extends Component {
           tweetCount={tweetCount}
           skin={skin}
           changeTweetCount={this.changeTweetCount}
+          changeSkin={this.changeSkin}
         />
         <div className="container mx-0 p-0">
           <div className="row col-lg-12 col-sm-12  m-0 p-0">
