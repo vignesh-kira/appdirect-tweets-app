@@ -35,24 +35,18 @@ class Columns extends Component {
 
   componentDidMount() {
     const promises = [];
-    promises.push(
-      fetch(
-        "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=techcrunch"
-      ).then(response => response.json())
-    );
-    promises.push(
-      fetch(
-        "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=laughingsquid"
-      ).then(response => response.json())
-    );
-    promises.push(
-      fetch(
-        "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=appdirect"
-      ).then(response => response.json())
+    const { twitterfeed } = this.state;
+
+    Object.keys(twitterfeed).map(i =>
+      promises.push(
+        fetch(
+          "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=" +
+            i
+        ).then(response => response.json())
+      )
     );
 
     Promise.all(promises).then(values => {
-      const { twitterfeed } = this.state;
       twitterfeed.techcrunch = values[0];
       twitterfeed.laughingsquid = values[1];
       twitterfeed.appdirect = values[2];
