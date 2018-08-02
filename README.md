@@ -4,11 +4,11 @@ Display tweets using React JS and Node JS
 
 ## Technologies Used:
 
-Frontend - React JS Bootstrap4
+Frontend - React JS with Bootstrap4 and other helper libraries
 
 Backend - Node JS (to fetch make twitter api call)
 
-### Note: The UI code is inside the "client" folder.
+Note: The UI code is inside the "client" folder.
 
 ## Pre-requisite:
 
@@ -25,5 +25,7 @@ Backend - Node JS (to fetch make twitter api call)
     npm install
 4.  Go to root of the folder and do:
     yarn-dev
+
     The app will run in http://localhost:3000/
-    Note: I have provided my api keys in the server.js file since its a demo. I will change the key in a week.
+
+    Note: I have provided my twitter api keys in the server.js file since its a demo. I will change the key in a week.
