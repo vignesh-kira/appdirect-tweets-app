@@ -11,7 +11,8 @@ class Columns extends Component {
     let twitterfeedLocal = localStorage.getItem("twitterfeed");
     this.state = {
       isloadcomplete: false,
-      twitterfeed: {
+      twitterfeed: [],
+      twitterUsers: {
         techcrunch: [],
         laughingsquid: [],
         appdirect: []
@@ -23,14 +24,15 @@ class Columns extends Component {
     this.changeTweetCount = this.changeTweetCount.bind(this);
     this.changeSkin = this.changeSkin.bind(this);
     this.changeSkinColor = this.changeSkinColor.bind(this);
+    this.changeTweetColumnOrder = this.changeTweetColumnOrder.bind(this);
     this.changeSkinColor(this.state.skin);
   }
 
   componentDidMount() {
     const promises = [];
-    const { twitterfeed } = this.state;
+    const { twitterfeed, twitterUsers } = this.state;
 
-    Object.keys(twitterfeed).map(i =>
+    Object.keys(twitterUsers).map(i =>
       promises.push(
         fetch(
           "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=" +
@@ -40,15 +42,19 @@ class Columns extends Component {
     );
 
     Promise.all(promises).then(values => {
-      twitterfeed.techcrunch = values[0];
-      twitterfeed.laughingsquid = values[1];
-      twitterfeed.appdirect = values[2];
+      values.map(value => twitterfeed.push(value));
       this.setState({
         isloadcomplete: true,
         twitterfeed
       });
     });
   }
+
+  changeTweetColumnOrder = twitterfeedIn => {
+    let twitterfeed = twitterfeedIn;
+    this.setState({ twitterfeed });
+    // localStorage.setItem("tweetCount", tweetCount);
+  };
 
   changeTweetCount = tweetCountIn => {
     let tweetCount = tweetCountIn;
@@ -104,6 +110,7 @@ class Columns extends Component {
           skin={skin}
           changeTweetCount={this.changeTweetCount}
           changeSkin={this.changeSkin}
+          changeTweetColumnOrder={this.changeTweetColumnOrder}
         />
         <div className="container mx-0 p-0">
           <div className="row col-lg-12 col-sm-12  m-0 p-0">

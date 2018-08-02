@@ -22,14 +22,9 @@ const SortableList = SortableContainer(({ items }) => {
   return (
     <ul>
       {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
+        <SortableItem key={index} index={index} value={value[0].user.name} />
       ))}
     </ul>
-    /* <ul>
-      {Object.keys(items).map(i => (
-        <SortableItem key={i} index={i} value={i} />
-      ))}
-    </ul> */
   );
 });
 
@@ -37,19 +32,17 @@ class Settings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tweetCount: 5,
-      modal: false,
-      items: ["techcrunch", "laughingsquid", "appdirect"],
-      formValues: {}
+      modal: false
     };
     this.toggle = this.toggle.bind(this);
     this.changeTweetCount = this.changeTweetCount.bind(this);
     this.changeSkin = this.changeSkin.bind(this);
   }
+
   onSortEnd = ({ oldIndex, newIndex }) => {
-    this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex)
-    });
+    const oldProps = this.props.twitterfeed;
+    const twitterfeed = arrayMove(oldProps, oldIndex, newIndex);
+    this.props.changeTweetColumnOrder(twitterfeed);
   };
 
   toggle() {
@@ -66,7 +59,6 @@ class Settings extends React.Component {
   }
 
   render() {
-    console.log(this.props.twitterfeed);
     return (
       <React.Fragment>
         <div className="row col-sm-12 m-0">
@@ -90,7 +82,7 @@ class Settings extends React.Component {
             <Form>
               <FormGroup>
                 <Label for="tweetCount">
-                  Tweets per Column (between 5 and 30):
+                  Tweets per Column (between 1 and 30):
                 </Label>
                 <Input
                   id="tweetCount"
@@ -119,7 +111,7 @@ class Settings extends React.Component {
               <FormGroup id="reorderList">
                 <Label for="reorderList">Re-order columns:</Label>
                 <SortableList
-                  items={this.state.items}
+                  items={this.props.twitterfeed}
                   onSortEnd={this.onSortEnd}
                   helperClass="sortableHelper btn btn-info"
                   className="dragItem"
@@ -134,17 +126,3 @@ class Settings extends React.Component {
 }
 
 export default Settings;
-/*
-<ul>
-      {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
-      ))}
-    </ul>
-
-<div className="my-2 text-center">
-                <Button color="primary" type="submit" value="submit">
-                  Save
-                </Button>
-              </div>
-
-    */
