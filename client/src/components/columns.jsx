@@ -14,27 +14,14 @@ class Columns extends Component {
         laughingsquid: [],
         appdirect: []
       },
-      tweetCount: 5,
+      tweetCount: 15,
       skin: "Pearl"
     };
 
     this.changeTweetCount = this.changeTweetCount.bind(this);
   }
 
-  changeColumnOrder = () => {
-    let newState = this.state;
-    newState = {
-      tweetCount: 5,
-      tweetTest: ["techcrunch"],
-      loadcomplete: false,
-      twitterfeed: {
-        techcrunch: [],
-        laughingsquid: [],
-        appdirect: []
-      }
-    };
-    this.setState(newState);
-  };
+  changeColumnOrder = () => {};
 
   componentDidMount() {
     const promises = [];
