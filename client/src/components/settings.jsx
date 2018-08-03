@@ -32,7 +32,8 @@ class Settings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      tweetCount: this.props.tweetCount
     };
     this.toggle = this.toggle.bind(this);
     this.changeTweetCount = this.changeTweetCount.bind(this);
@@ -52,13 +53,16 @@ class Settings extends React.Component {
   }
 
   changeTweetCount(event) {
-    this.props.changeTweetCount(event.target.value);
+    const tweetCountUpdated = event.target.value;
+    this.props.changeTweetCount(tweetCountUpdated);
+    this.setState({ tweetCount: tweetCountUpdated });
   }
   changeSkin(event) {
     this.props.changeSkin(event.target.value);
   }
 
   render() {
+    const { tweetCount, twitterfeed, skin } = this.props;
     return (
       <React.Fragment>
         <div className="row col-sm-12 m-0">
@@ -82,14 +86,14 @@ class Settings extends React.Component {
             <Form>
               <FormGroup>
                 <Label for="tweetCount">
-                  Tweets per Column (between 1 and 30):
+                  Tweets per Column (between 1 and 30): &nbsp;{tweetCount}
                 </Label>
                 <Input
                   id="tweetCount"
                   type="range"
                   min="1"
                   max="30"
-                  value={this.props.tweetCount}
+                  value={tweetCount}
                   onChange={this.changeTweetCount}
                   step="1"
                 />
@@ -100,7 +104,7 @@ class Settings extends React.Component {
                   type="select"
                   name="skin"
                   id="skin"
-                  value={this.props.skin}
+                  value={skin}
                   onChange={this.changeSkin}
                 >
                   <option value="Pearl">Pearl</option>
@@ -111,7 +115,7 @@ class Settings extends React.Component {
               <FormGroup id="reorderList">
                 <Label for="reorderList">Re-order columns:</Label>
                 <SortableList
-                  items={this.props.twitterfeed}
+                  items={twitterfeed}
                   onSortEnd={this.onSortEnd}
                   helperClass="sortableHelper btn btn-info"
                   className="dragItem"
