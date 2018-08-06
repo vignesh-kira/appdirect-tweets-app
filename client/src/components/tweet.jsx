@@ -7,6 +7,10 @@ class Tweet extends Component {
   state = {
     url: "https://twitter.com/"
   };
+
+  /*
+  * Time formatted to simple text if less than a day and a complete format if more than 24 hrs
+  */
   formatDate = tweet => {
     const today = MomentJS();
     const created_at = MomentJS(tweet.created_at);

@@ -4,8 +4,8 @@ import "../styles/tweet.css";
 
 class Column extends Component {
   render() {
-    const { tweets } = this.props;
-    const { tweetCount } = this.props;
+    const { tweets, tweetCount } = this.props;
+
     return (
       <div className="tweet-column-data">
         {tweets

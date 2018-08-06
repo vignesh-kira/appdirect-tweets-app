@@ -38,8 +38,7 @@ class Columns extends Component {
     Object.keys(twitterUsers).map(i =>
       promises.push(
         fetch(
-          "http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=" +
-            i
+          `http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=${i}`
         ).then(response => response.json())
       )
     );
@@ -53,8 +52,11 @@ class Columns extends Component {
     });
   }
 
+  /*
+   *  Change Column Order, Skin Color and Tweet Count and set LocalStorage
+   */
   changeTweetColumnOrder = twitterfeedIn => {
-    let twitterfeed = twitterfeedIn;
+    const twitterfeed = twitterfeedIn;
     let twitterUsersNew = {};
 
     this.setState({ twitterfeed });
@@ -77,15 +79,19 @@ class Columns extends Component {
   };
   changeSkinColor = skinIn => {
     const skin = skinIn;
-    let body = document.body.classList;
+    let bodyClassList = document.body.classList;
 
-    body.remove("body-skin-jade", "body-skin-sapphire", "body-skin-pearl");
-    if (skin === "Jade") {
-      body.add("body-skin-jade");
-    } else if (skin === "Sapphire") {
-      body.add("body-skin-sapphire");
-    } else {
-      body.add("body-skin-pearl");
+    document.body.className = "";
+    switch (skin) {
+      case "Jade":
+        bodyClassList.add("body-skin-jade");
+        break;
+      case "Sapphire":
+        bodyClassList.add("body-skin-sapphire");
+        break;
+      default:
+        bodyClassList.add("body-skin-pearl");
+        break;
     }
   };
 

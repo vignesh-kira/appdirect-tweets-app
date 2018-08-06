@@ -65,19 +65,18 @@ class Settings extends React.Component {
     const { tweetCount, twitterfeed, skin } = this.props;
     return (
       <React.Fragment>
-        <div className="row col-sm-12 m-0">
-          <div className="edit-settings-btn col-md-12 text-center">
-            <a
-              className="btn-primary btn-sm"
+        <div className="row col-sm-12 col-md-12 m-0">
+          <div className="text-center w-100 edit-settings-btn">
+            <Button
+              type="button"
+              color="primary"
+              className="btn-sm"
               data-toggle="collapse"
-              href="javascript:none"
-              role="button"
-              aria-expanded="false"
-              aria-controls="collapseExample"
               onClick={this.toggle}
+              id="editSettings"
             >
               Edit <i className="fa fa-cog fa-lg" />
-            </a>
+            </Button>
           </div>
         </div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className="">
