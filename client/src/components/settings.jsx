@@ -35,9 +35,6 @@ class Settings extends React.Component {
       modal: false,
       tweetCount: this.props.tweetCount
     };
-    this.toggle = this.toggle.bind(this);
-    this.changeTweetCount = this.changeTweetCount.bind(this);
-    this.changeSkin = this.changeSkin.bind(this);
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -46,20 +43,21 @@ class Settings extends React.Component {
     this.props.changeTweetColumnOrder(twitterfeed);
   };
 
-  toggle() {
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
-  }
+  };
 
-  changeTweetCount(event) {
+  changeTweetCount = event => {
     const tweetCountUpdated = event.target.value;
     this.props.changeTweetCount(tweetCountUpdated);
     this.setState({ tweetCount: tweetCountUpdated });
-  }
-  changeSkin(event) {
+  };
+
+  changeSkin = event => {
     this.props.changeSkin(event.target.value);
-  }
+  };
 
   render() {
     const { tweetCount, twitterfeed, skin } = this.props;
@@ -85,7 +83,8 @@ class Settings extends React.Component {
             <Form>
               <FormGroup>
                 <Label for="tweetCount">
-                  Tweets per Column (between 1 and 30): &nbsp;{tweetCount}
+                  Tweets per Column (between 1 and 30): &nbsp;
+                  {tweetCount}
                 </Label>
                 <Input
                   id="tweetCount"

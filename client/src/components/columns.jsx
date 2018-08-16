@@ -24,10 +24,6 @@ class Columns extends Component {
     if (twitterUserLocal) {
       this.state.twitterUsers = JSON.parse(twitterUserLocal);
     }
-    this.changeTweetCount = this.changeTweetCount.bind(this);
-    this.changeSkin = this.changeSkin.bind(this);
-    this.changeSkinColor = this.changeSkinColor.bind(this);
-    this.changeTweetColumnOrder = this.changeTweetColumnOrder.bind(this);
     this.changeSkinColor(this.state.skin);
   }
 
