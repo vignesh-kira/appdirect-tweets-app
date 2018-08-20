@@ -29,7 +29,11 @@ class Columns extends Component {
     this.changeSkinColor(this.state.skin);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.twitterList();
+  }
+
+  async twitterList() {
     try {
       const promises = [];
       const { twitterfeed, twitterUsers } = this.state;
