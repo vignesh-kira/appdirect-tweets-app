@@ -19,7 +19,8 @@ class Columns extends Component {
         appdirect: []
       },
       tweetCount: tweetCountLocal ? tweetCountLocal : 15,
-      skin: skinLocal ? skinLocal : "Pearl"
+      skin: skinLocal ? skinLocal : "Pearl",
+      url: "https://twitter.com/"
     };
     if (twitterUserLocal) {
       this.state.twitterUsers = JSON.parse(twitterUserLocal);

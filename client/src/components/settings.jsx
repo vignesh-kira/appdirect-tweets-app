@@ -32,8 +32,8 @@ class Settings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
-      tweetCount: this.props.tweetCount
+      modal: false
+      //  tweetCount: this.props.tweetCount
     };
   }
 
@@ -52,7 +52,7 @@ class Settings extends React.Component {
   changeTweetCount = event => {
     const tweetCountUpdated = event.target.value;
     this.props.changeTweetCount(tweetCountUpdated);
-    this.setState({ tweetCount: tweetCountUpdated });
+    //  this.setState({ tweetCount: tweetCountUpdated });
   };
 
   changeSkin = event => {
