@@ -20,7 +20,8 @@ class Columns extends Component {
       },
       tweetCount: tweetCountLocal ? tweetCountLocal : 15,
       skin: skinLocal ? skinLocal : "Pearl",
-      url: "https://twitter.com/"
+      url: "https://twitter.com/",
+      modal: false
     };
     if (twitterUserLocal) {
       this.state.twitterUsers = JSON.parse(twitterUserLocal);
@@ -91,9 +92,12 @@ class Columns extends Component {
         break;
     }
   };
+  changeModal = () => {
+    this.setState({ modal: !this.state.modal });
+  };
 
   render() {
-    const { twitterfeed, tweetCount, isloadcomplete, skin } = this.state;
+    const { twitterfeed, tweetCount, isloadcomplete, skin, modal } = this.state;
     const loader = [];
     for (var i = 0; i < 3; i++) {
       loader.push(
@@ -122,6 +126,8 @@ class Columns extends Component {
           changeTweetCount={this.changeTweetCount}
           changeSkin={this.changeSkin}
           changeTweetColumnOrder={this.changeTweetColumnOrder}
+          modal={modal}
+          changeModal={this.changeModal}
         />
         <div className="container mx-0 p-0">
           <div className="row col-lg-12 col-sm-12  m-0 p-0">

@@ -3,6 +3,9 @@ import TweetParser from "react-tweet-parser";
 import Moment from "react-moment";
 import MomentJS from "moment";
 
+/*
+ * Time formatted to simple text if less than a day and a complete format if more than 24 hrs
+*/
 const formatDate = tweet => {
   const today = MomentJS();
   const created_at = MomentJS(tweet.created_at);
@@ -19,11 +22,7 @@ const formatDate = tweet => {
   }
 };
 
-const Tweet = props => {
-  /*
-  * Time formatted to simple text if less than a day and a complete format if more than 24 hrs
-  */
-  const { tweet, url } = props;
+const Tweet = ({ tweet, url }) => {
   return (
     <React.Fragment>
       <div className="tweet-container">
