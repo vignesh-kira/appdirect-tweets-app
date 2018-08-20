@@ -29,7 +29,7 @@ class Columns extends Component {
     this.changeSkinColor(this.state.skin);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const promises = [];
     const { twitterfeed, twitterUsers } = this.state;
 
@@ -41,13 +41,16 @@ class Columns extends Component {
       )
     );
 
-    Promise.all(promises).then(values => {
-      values.map(value => twitterfeed.push(value));
-      this.setState({
-        isloadcomplete: true,
-        twitterfeed
-      });
-    });
+    const results = await Promise.all(promises);
+    const setTwittefeed = await Promise.all(
+      results.map(value => {
+        twitterfeed.push(value);
+        this.setState({
+          isloadcomplete: true,
+          twitterfeed
+        });
+      })
+    );
   }
 
   /*

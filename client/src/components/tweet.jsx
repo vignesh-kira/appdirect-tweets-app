@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import TweetParser from "react-tweet-parser";
 import Moment from "react-moment";
 import MomentJS from "moment";
