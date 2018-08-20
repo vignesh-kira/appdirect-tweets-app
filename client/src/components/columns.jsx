@@ -30,27 +30,36 @@ class Columns extends Component {
   }
 
   async componentDidMount() {
-    const promises = [];
-    const { twitterfeed, twitterUsers } = this.state;
+    try {
+      const promises = [];
+      const { twitterfeed, twitterUsers } = this.state;
 
-    Object.keys(twitterUsers).map(i =>
-      promises.push(
-        fetch(
-          `http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=${i}`
-        ).then(response => response.json())
-      )
-    );
+      Object.keys(twitterUsers).map(i =>
+        promises.push(
+          fetch(
+            `http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=${i}`
+          ).then(response => {
+            if (!response.ok) {
+              throw response;
+            }
+            return response.json();
+          })
+        )
+      );
 
-    const results = await Promise.all(promises);
-    const setTwittefeed = await Promise.all(
-      results.map(value => {
-        twitterfeed.push(value);
-        this.setState({
-          isloadcomplete: true,
-          twitterfeed
-        });
-      })
-    );
+      const results = await Promise.all(promises);
+      const setTwittefeed = await Promise.all(
+        results.map(value => {
+          twitterfeed.push(value);
+          this.setState({
+            isloadcomplete: true,
+            twitterfeed
+          });
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   /*
