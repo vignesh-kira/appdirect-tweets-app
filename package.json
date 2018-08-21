@@ -8,7 +8,7 @@
     "email": "vignesh.intell@gmail.com"
   },
   "scripts": {
-    "now-start":"yarn build",
+    "now-start":"yarn dev",
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
