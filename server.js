@@ -6,7 +6,7 @@ twitterProxyServer({
   consumerSecret: "ZpyzEbfsxeEIJ3a4MMWC1ueWHHfEpA1HhzcPHGaH2JjbnxsfkV"
 });
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
