@@ -144,14 +144,13 @@ class Columns extends Component {
           changeTweetColumnOrder={this.changeTweetColumnOrder}
           modal={modal}
           changeModal={this.changeModal}
-          url={url}
         />
         <div className="container mx-0 p-0">
           <div className="row col-lg-12 col-sm-12  m-0 p-0">
             {twitterfeed.map(user => (
               <div className="col-lg-4 col-md-12 mb-3">
                 <div className="tweets-column">
-                  <Column tweets={user} tweetCount={tweetCount} />
+                  <Column tweets={user} tweetCount={tweetCount} url={url} />
                 </div>
               </div>
             ))}
