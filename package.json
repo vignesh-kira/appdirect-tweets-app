@@ -1,6 +1,7 @@
 {
   "name": "example-create-react-app-express",
   "version": "0.1.0",
+  "proxy": "http://localhost:7890/",
   "dependencies": {
     "bootstrap": "^4.1.3",
     "font-awesome": "^4.7.0",
