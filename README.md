@@ -10,7 +10,7 @@ This React app displays tweets from twitter users. It comes with other features 
 
 Frontend - React JS with Bootstrap4 and other helper libraries
 
-Backend - Node JS (to fetch make twitter api call)
+Backend - Node JS (to fetch make twitter api call; Code has been separated from this branch. It is run as a separate service in server.) 
 
 Note: The UI code is inside the "client" folder.
 
@@ -30,17 +30,12 @@ Note: The UI code is inside the "client" folder.
 
 1.  npm
 2.  node
-3.  yarn
 
-## Steps to install:
+## Steps to install: There are 3 branches: Client (It has the React code), Server (it has the backend), Master(Not in use anymore)
 
-1.  First clone this repository.
-2.  Inside the folder appdirect-tweets-app and then do:
-    npm install
-3.  Naviage to client folder and then do:
-    npm install
-4.  Go to root of the folder and do:
-    yarn-dev
+1. Branch Server: Pull from this branch and npm install and then node twitterserver.js
+Client(React app) makes a fetch call to localhost:8080 in Server to retrieve tweets. So that has to run first.
+2.  Branch Client : Next clone the Client branh and npm install 
 
     The app will run in http://localhost:3000/
 
