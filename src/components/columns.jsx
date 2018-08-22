@@ -113,7 +113,7 @@ class Columns extends Component {
   };
 
   render() {
-    const { twitterfeed, tweetCount, isloadcomplete, skin, modal } = this.state;
+    const { twitterfeed, tweetCount, isloadcomplete, skin, modal, url } = this.state;
     const loader = [];
     for (var i = 0; i < 3; i++) {
       loader.push(
@@ -144,6 +144,7 @@ class Columns extends Component {
           changeTweetColumnOrder={this.changeTweetColumnOrder}
           modal={modal}
           changeModal={this.changeModal}
+          url={url}
         />
         <div className="container mx-0 p-0">
           <div className="row col-lg-12 col-sm-12  m-0 p-0">
