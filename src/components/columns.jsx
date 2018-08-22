@@ -41,7 +41,7 @@ class Columns extends Component {
       Object.keys(twitterUsers).map(i =>
         promises.push(
           fetch(
-            `/1.1/statuses/user_timeline.json?count=30&screen_name=${i}`
+            `http://172.104.218.167:8080/1.1/statuses/user_timeline.json?count=30&screen_name=${i}`
           ).then(response => {
             if (!response.ok) {
               throw response;
