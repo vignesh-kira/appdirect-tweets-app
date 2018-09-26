@@ -15,7 +15,11 @@ Frontend - React JS with Bootstrap4 and other helper libraries
 
 Backend - Node JS (to fetch make twitter api call; Code has been separated from this branch. It is run as a separate service in server.) 
 
-Note: The UI code is inside the "client" folder.
+## Branches:
+
+Client - Contains UI code
+
+Server - Contains Backend code
 
 ### Summary of Requirements covered:
 
@@ -36,9 +40,10 @@ Note: The UI code is inside the "client" folder.
 
 ## Steps to install: There are 3 branches: Client (It has the React code), Server (it has the backend), Master(Not in use anymore)
 
-1. Branch Server: Pull from this branch and npm install and then node twitterserver.js
+1. Branch Server: Pull from this branch and npm install and then npm run
 Client(React app) makes a fetch call to localhost:8080 in Server to retrieve tweets. So that has to run first.
-2.  Branch Client : Next clone the Client branh and npm install 
+
+2.  Branch Client : Next clone the Client branh and npm install and npm run
 
     The app will run in http://localhost:3000/
 
