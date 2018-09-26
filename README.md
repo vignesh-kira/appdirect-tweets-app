@@ -40,8 +40,8 @@ Server - Contains Backend code
 
 ## Steps to install: There are 3 branches: Client (It has the React code), Server (it has the backend), Master(Not in use anymore)
 
-1. Branch Server: Pull from this branch and npm install and then npm run
-Client(React app) makes a fetch call to localhost:8080 in Server to retrieve tweets. So that has to run first.
+1. Branch Server: Pull from this branch and npm install and then npm run.
+Client(React app) makes a fetch call to localhost:8080 in Server to retrieve tweets.
 
 2.  Branch Client : Next clone the Client branh and npm install and npm run
 
