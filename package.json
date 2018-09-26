@@ -5,7 +5,7 @@
     "email": "vignesh.intell@gmail.com"
   },
   "scripts": {
-    "server": "node server.js"
+    "start": "node twitterserver.js"
   },
   "dependencies": {
     "http-server": "^0.9.0",
